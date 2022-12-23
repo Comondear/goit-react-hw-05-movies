@@ -1,6 +1,7 @@
 import { Routes, Route, Outlet } from 'react-router-dom';
 import { Container } from './Styles';
 import { Suspense, lazy } from 'react';
+import Navigation from 'components/Navigation';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -14,6 +15,7 @@ const Reviews = lazy(() => import('pages/Reviews'));
 export const App = () => {
   return (
     <Container>
+      <Navigation />
       <ToastContainer autoClose={5000} />
       <Suspense>
         <Routes>

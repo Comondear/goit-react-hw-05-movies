@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import * as moviesApi from '../components/api';
 import defaultImg from '../components/Images/defaultImg.jpg';
 import {
-  MovieHorizontal,
   CastGallery,
   CastCard,
   CastName,
@@ -28,7 +27,6 @@ export default function Cast() {
 
   return (
     <>
-      <MovieHorizontal />
       {casts && (
         <CastGallery>
           {casts.map(({ id, profile_path, name, character }) => (

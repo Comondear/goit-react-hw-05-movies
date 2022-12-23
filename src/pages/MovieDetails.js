@@ -8,6 +8,7 @@ import {
   MovieLink,
   MovieH2,
   MovieH3,
+  GoBackBTN,
 } from '../components/Styles';
 import NotFound from '../pages/NotFound';
 
@@ -50,7 +51,14 @@ export default function MovieDetails() {
       ) : (
         <>
           <div text={`${movie.title}`} />
-          <button type="button" onClick={onBtnClick} label={'GO BACK'} />
+          <GoBackBTN
+            type="button"
+            onClick={onBtnClick}
+            label={'GO BACK'}
+            to="/movies"
+          >
+            Go back
+          </GoBackBTN>
           <MovieCard>
             <img
               src={`${viewPoster(movie.poster_path)}`}

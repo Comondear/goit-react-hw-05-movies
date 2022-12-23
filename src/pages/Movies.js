@@ -12,7 +12,6 @@ import {
 } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as movieApi from '../components/api';
-import NotFound from './NotFound';
 
 export default function SearchMovie() {
   const [searchParams] = useSearchParams();
@@ -57,7 +56,7 @@ export default function SearchMovie() {
           ))}
         </ul>
       ) : (
-        <NotFound />
+        <p></p>
       )}
     </>
   );
