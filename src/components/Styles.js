@@ -144,8 +144,8 @@ export const MovieLink = styled(NavLink)`
   border-radius: 10px;
   box-shadow: 0 0 1px 1px black;
   &.active {
-    color: #de14b9;
-    box-shadow: 0 0 1px 3px black;
+    color: #black;
+    box-shadow: 0 0 1px 1px red;
   }
 `;
 

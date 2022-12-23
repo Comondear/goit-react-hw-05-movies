@@ -4,7 +4,6 @@ import * as moviesApi from '../components/api';
 import { Title } from '../components/Styles';
 
 export default function Home() {
-  // const location = useLocation();
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
