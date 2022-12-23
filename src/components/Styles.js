@@ -5,6 +5,10 @@ export const Container = styled.div`
   width: 100%;
 `;
 
+export const Top = styled.div`
+  margin: 20px;
+`;
+
 export const Header = styled.header`
   display: flex;
   align-items: center;
@@ -23,7 +27,8 @@ export const Header = styled.header`
 `;
 
 export const Form = styled.form`
-  margin: 0 auto;
+  margin-top: 10px;
+  margin-left: 10px;
   padding: 0 16px;
 `;
 
@@ -46,9 +51,6 @@ export const Button = styled.button`
   height: 42px;
   background: none;
   border: none;
-  &:hover {
-    color: red;
-  }
 `;
 
 export const Link = styled(NavLink)`
@@ -68,6 +70,9 @@ export const Title = styled.li`
   color: black;
   font-weight: 500;
   padding: 10px;
+  &:hoder {
+    color: red;
+  }
 `;
 
 //------------------------------------reviews-------------------------------//
@@ -116,6 +121,10 @@ export const CastSpan = styled.span`
 `;
 
 //----------------------------------MovieCard-----------------------------------//
+
+export const MoviePage = styled.div`
+  margin: 20px;
+`;
 
 export const MovieCard = styled.div`
   display: flex;

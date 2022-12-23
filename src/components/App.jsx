@@ -3,7 +3,9 @@ import { Container } from './Styles';
 import { Suspense, lazy } from 'react';
 import Navigation from 'components/Navigation';
 import { ToastContainer } from 'react-toastify';
+import Loader from '../components/Loader';
 import 'react-toastify/dist/ReactToastify.css';
+import './AppGlobalStyle.css';
 
 const NotFound = lazy(() => import('pages/NotFound'));
 const Home = lazy(() => import('pages/Home'));
@@ -17,7 +19,7 @@ export const App = () => {
     <Container>
       <Navigation />
       <ToastContainer autoClose={5000} />
-      <Suspense>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route

@@ -1,10 +1,11 @@
 import { LinkEl } from '../components/Styles';
+import { Top } from '../components/Styles';
 
 const Navigation = () => (
-  <nav>
+  <Top>
     <LinkEl to="/">Home</LinkEl>
     <LinkEl to="/movies">Movies</LinkEl>
-  </nav>
+  </Top>
 );
 
 export default Navigation;
