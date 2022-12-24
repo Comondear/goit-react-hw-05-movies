@@ -19,10 +19,11 @@ export default function MovieDetails() {
   const { movieId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     movieApi.getMovieId(movieId).then(response => setMovie(response));
+    setLoading(false);
   }, [movieId]);
 
   const movieScore = score => {
@@ -50,49 +51,44 @@ export default function MovieDetails() {
   return isLoading ? (
     <Loader />
   ) : (
-    <>
+    <MoviePage isLoading={isLoading}>
       {!movie ? (
         <p></p>
       ) : (
         <>
-          <MoviePage>
-            <GoBackBTN
-              type="button"
-              onClick={onBtnClick}
-              label={'GO BACK'}
-              to="/movies"
-            >
-              Go back
-            </GoBackBTN>
-            <MovieCard isLoading={isLoading}>
-              <img
-                src={`${viewPoster(movie.poster_path)}`}
-                alt={movie.title}
-                width="320"
-              />
-              <MovieInfo>
-                <MovieH2>{movie.title}</MovieH2>
-                <p> User Score: {`${movieScore(movie.vote_average)}`} </p>
-                <MovieH3>Overview</MovieH3>
-                <p>{movie.overview}</p>
-                <MovieH3>Genres</MovieH3>
-                <p>{`${movieGanres(movie.genres)}`}</p>
-              </MovieInfo>
-            </MovieCard>
-            <div text="Additional information" />
-            <MovieLink to={`/movies/${movie.id}/cast`} state={location.state}>
-              Cast
-            </MovieLink>
-            <MovieLink
-              to={`/movies/${movie.id}/reviews`}
-              state={location.state}
-            >
-              Reviews
-            </MovieLink>
-            <Outlet />
-          </MoviePage>
+          <GoBackBTN
+            type="button"
+            onClick={onBtnClick}
+            label={'GO BACK'}
+            to="/movies"
+          >
+            Go back
+          </GoBackBTN>
+          <MovieCard>
+            <img
+              src={`${viewPoster(movie.poster_path)}`}
+              alt={movie.title}
+              width="320"
+            />
+            <MovieInfo>
+              <MovieH2>{movie.title}</MovieH2>
+              <p> User Score: {`${movieScore(movie.vote_average)}`} </p>
+              <MovieH3>Overview</MovieH3>
+              <p>{movie.overview}</p>
+              <MovieH3>Genres</MovieH3>
+              <p>{`${movieGanres(movie.genres)}`}</p>
+            </MovieInfo>
+          </MovieCard>
+          <div text="Additional information" />
+          <MovieLink to={`/movies/${movie.id}/cast`} state={location.state}>
+            Cast
+          </MovieLink>
+          <MovieLink to={`/movies/${movie.id}/reviews`} state={location.state}>
+            Reviews
+          </MovieLink>
+          <Outlet />
         </>
       )}
-    </>
+    </MoviePage>
   );
 }

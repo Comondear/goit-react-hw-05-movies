@@ -44,13 +44,9 @@ export default function SearchMovie() {
   ) : (
     <>
       <header text="SEARCH MOVIES" />
-      <SearchForm
-        searchProps={formSubmit}
-        search={search}
-        isLoading={isLoading}
-      />
+      <SearchForm searchProps={formSubmit} search={search} />
       {movies && movies.length > 0 ? (
-        <ul>
+        <ul isLoading={isLoading}>
           {movies.map(({ id, title }) => (
             <Link key={id} to={`/movies/${id}`} state={location}>
               <Title>{title}</Title>
