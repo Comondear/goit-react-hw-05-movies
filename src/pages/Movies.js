@@ -4,7 +4,7 @@ import SearchForm from '../components/SearchForm';
 // import { Container } from './App.styled';
 
 import { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as movieApi from '../components/api';
 import Loader from '../components/Loader';
@@ -15,7 +15,7 @@ export default function SearchMovie() {
   const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('query') || '');
   const [movies, setMovies] = useState([]);
-  // const location = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
 
@@ -52,7 +52,7 @@ export default function SearchMovie() {
       {movies && movies.length > 0 ? (
         <ul>
           {movies.map(({ id, title }) => (
-            <Link to={`/movies/${id}`}>
+            <Link key={id} to={`/movies/${id}`} state={location}>
               <Title>{title}</Title>
             </Link>
           ))}
