@@ -35,11 +35,11 @@ export default function MovieDetails() {
     return genres.map(genre => genre.name).join(', ');
   };
 
-  // const onBtnClick = () => {
-  //   location.state
-  //     ? navigate(location.state.pathname + location.state.search)
-  //     : navigate('/');
-  // };
+  const onBtnClick = () => {
+    location.state
+      ? navigate(location.state.pathname + location.state.search)
+      : navigate('/');
+  };
 
   const backLink = location.state?.from ?? '/';
 
@@ -60,7 +60,7 @@ export default function MovieDetails() {
         <>
           <GoBackBTN
             type="button"
-            // onClick={onBtnClick}
+            onClick={onBtnClick}
             label={'GO BACK'}
             to={backLink}
           >
