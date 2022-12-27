@@ -6,7 +6,7 @@ import SearchForm from '../components/SearchForm';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import * as movieApi from '../components/api';
+import * as movieApi from '../services/api';
 import Loader from '../components/Loader';
 import { Link } from 'react-router-dom';
 import { Title } from '../components/Styles';

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import * as moviesApi from '../components/api';
+import * as moviesApi from '../services/api';
 import defaultImg from '../components/Images/defaultImg.jpg';
 import {
   CastGallery,
@@ -14,9 +14,12 @@ export default function Cast() {
   const [casts, setCasts] = useState(null);
   const { movieId } = useParams();
 
-  useEffect(() => {
-    moviesApi.getCast(movieId).then(response => setCasts(response.cast));
-  }, [movieId]);
+  useEffect(
+    e => {
+      moviesApi.getCast(movieId).then(response => setCasts(response.cast));
+    },
+    [movieId]
+  );
 
   const viewPoster = profile_path => {
     if (profile_path === null) {

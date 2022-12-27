@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation, Outlet } from 'react-router-dom';
 import Loader from '../components/Loader';
 
-import * as movieApi from '../components/api';
+import * as movieApi from '../services/api';
 import {
   MovieCard,
   MovieInfo,
@@ -35,11 +35,13 @@ export default function MovieDetails() {
     return genres.map(genre => genre.name).join(', ');
   };
 
-  const onBtnClick = () => {
-    location.state
-      ? navigate(location.state.pathname + location.state.search)
-      : navigate('/');
-  };
+  // const onBtnClick = () => {
+  //   location.state
+  //     ? navigate(location.state.pathname + location.state.search)
+  //     : navigate('/');
+  // };
+
+  const backLink = location.state?.from ?? '/';
 
   const viewPoster = poster_path => {
     if (poster_path === null) {
@@ -58,9 +60,9 @@ export default function MovieDetails() {
         <>
           <GoBackBTN
             type="button"
-            onClick={onBtnClick}
+            // onClick={onBtnClick}
             label={'GO BACK'}
-            to="/movies"
+            to={backLink}
           >
             Go back
           </GoBackBTN>
@@ -86,6 +88,7 @@ export default function MovieDetails() {
           <MovieLink to={`/movies/${movie.id}/reviews`} state={location.state}>
             Reviews
           </MovieLink>
+
           <Outlet />
         </>
       )}

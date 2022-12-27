@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import * as moviesApi from '../components/api';
+import * as moviesApi from '../services/api';
 import { Title } from '../components/Styles';
 
 export default function Home() {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import * as moviesApi from '../components/api';
+import * as moviesApi from '../services/api';
 import { ReviewsStyle } from 'components/Styles';
 
 export default function Reviews() {
@@ -27,9 +27,7 @@ export default function Reviews() {
           ))}
         </ReviewsStyle>
       ) : (
-        <h3>
-          <p text="We don’t have any reviews for this movie" />
-        </h3>
+        <p text="We don’t have any reviews for this movie" />
       )}
     </>
   );
