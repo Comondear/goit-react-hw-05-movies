@@ -23,7 +23,7 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route
-            path="movies"
+            path="movies/"
             element={
               <>
                 <Outlet />

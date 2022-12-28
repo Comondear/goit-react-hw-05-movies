@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate, useLocation, Outlet } from 'react-router-dom';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 import Loader from '../components/Loader';
 
 import * as movieApi from '../services/api';
@@ -12,12 +12,10 @@ import {
   GoBackBTN,
   MoviePage,
 } from '../components/Styles';
-// import NotFound from '../pages/NotFound';
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
-  const navigate = useNavigate();
   const location = useLocation();
   const [isLoading, setLoading] = useState(true);
 
@@ -35,13 +33,7 @@ export default function MovieDetails() {
     return genres.map(genre => genre.name).join(', ');
   };
 
-  const onBtnClick = () => {
-    location.state
-      ? navigate(location.state.pathname + location.state.search)
-      : navigate('/');
-  };
-
-  const backLink = location.state?.from ?? '/';
+  const backLink = location.state.pathname + location.state.search ?? '/';
 
   const viewPoster = poster_path => {
     if (poster_path === null) {
@@ -58,12 +50,7 @@ export default function MovieDetails() {
         <p></p>
       ) : (
         <>
-          <GoBackBTN
-            type="button"
-            onClick={onBtnClick}
-            label={'GO BACK'}
-            to={backLink}
-          >
+          <GoBackBTN type="button" label={'GO BACK'} to={backLink}>
             Go back
           </GoBackBTN>
           <MovieCard>
